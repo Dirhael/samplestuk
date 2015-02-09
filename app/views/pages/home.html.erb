@@ -1,0 +1,7 @@
+<div class="jumbotron">
+  <h1><i class="fa fa-cubes"></i>Samplestuk</h1>
+  <p>This is a to-do list in RoR</p>
+  <% if !current_user %>
+    <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+  <% end %>
+</div>
