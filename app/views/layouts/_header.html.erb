@@ -16,12 +16,12 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
             <li>
-              <div class="dropdown">
+              <div class="dropdown navbar-btn">
                 <button class="btn btn-default dropdown-toggle" type="button" border="none" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li role="presentation"><%= link_to 'Settings', edit_user_registration_path %></li>
+                  <li role="presentation"><%= link_to ' Settings', edit_user_registration_path, class: 'fa fa-cc-visa' %></li>
                   <li role="presentation"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
                 </ul>
               </div>
