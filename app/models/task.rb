@@ -1,6 +1,8 @@
 class Task < ActiveRecord::Base
   belongs_to :user
 
+  validates_presence_of :content
+
   auto_html_for :content do
     html_escape
     image
