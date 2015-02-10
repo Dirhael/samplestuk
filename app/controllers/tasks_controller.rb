@@ -1,31 +1,23 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :change]
 
-  # GET /tasks
-  # GET /tasks.json
   def index
     @to_do = current_user.tasks.where(state: 'to_do')
     @doing = current_user.tasks.where(state: 'doing')
     @done = current_user.tasks.where(state: 'done')
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.json
   def show
   end
 
-  # GET /tasks/new
   def new
     @task = Task.new
   end
 
-  # GET /tasks/1/edit
   def edit
   end
 
-  # POST /tasks
-  # POST /tasks.json
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
@@ -35,8 +27,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
   def update
     if @task.update(task_params)
       redirect_to @task, notice: 'Task was successfully updated.'
@@ -45,12 +35,15 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.json
   def destroy
     if @task.destroy
       redirect_to tasks_url, notice: 'Task was successfully destroyed.'
     end
+  end
+
+  def change
+    @task.update_attributes(state: params[:state])
+    redirect_to tasks_path, notice: 'Task state changed.'
   end
 
   private
