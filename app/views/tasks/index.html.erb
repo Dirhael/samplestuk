@@ -1,85 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-4"><h1 class="text-center">To Do</h1>
+    <%= render @to_do %>
+  </div>
 
-<h1>Listing Tasks</h1>
-
-<h2>To Do</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>State</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @to_do.each do |todo| %>
-      <tr>
-        <td><%= todo.content %></td>
-        <td><%= todo.state %></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_task_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Mark as Doing', change_task_path(todo, state: 'doing'), method: :put  %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Task', new_task_path %>
-
-
-<h2>Doing</h2>
-
-<table>
-  <thead>
-  <tr>
-    <th>Content</th>
-    <th>State</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @doing.each do |doing| %>
-      <tr>
-        <td><%= doing.content %></td>
-        <td><%= doing.state %></td>
-        <td><%= link_to 'Show', doing %></td>
-        <td><%= link_to 'Edit', edit_task_path(doing) %></td>
-        <td><%= link_to 'Destroy', doing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Mark as ToDo', change_task_path(doing, state: 'to_do'), method: :put  %></td>
-        <td><%= link_to 'Mark as Done', change_task_path(doing, state: 'done'), method: :put  %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<h2>Done</h2>
-
-<table>
-  <thead>
-  <tr>
-    <th>Content</th>
-    <th>State</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @done.each do |done| %>
-      <tr>
-        <td><%= done.content %></td>
-        <td><%= done.state %></td>
-        <td><%= link_to 'Show', done %></td>
-        <td><%= link_to 'Edit', edit_task_path(done) %></td>
-        <td><%= link_to 'Destroy', done, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Mark as Doing', change_task_path(done, state: 'doing'), method: :put %></td>
-        <td><%= link_to 'Mark as ToDo', change_task_path(done, state: 'to_do'), method: :put %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+  <div class="col-md-4"><h1 class="text-center">Doing</h1>
+    <%= render @doing %>
+  </div>
+  <div class="col-md-4"><h1 class="text-center">Done</h1>
+    <%= render @done %>
+  </div>
+</div>
