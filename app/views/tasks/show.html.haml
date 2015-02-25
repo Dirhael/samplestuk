@@ -1,0 +1,11 @@
+%p#notice= notice
+.form-signin
+  .row
+    %strong Content
+    = @task.content
+  .row
+    %strong State
+    = @task.state
+  = link_to 'Edit', edit_task_path(@task)
+  |
+  = link_to 'Back', tasks_path

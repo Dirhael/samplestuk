@@ -1,0 +1,11 @@
+.row
+  .col-md-4
+    %h1.text-center To Do
+    = render @to_do
+  .col-md-4
+    %h1.text-center Doing
+    = render @doing
+  .col-md-4
+    %h1.text-center Done
+    = render @done
+= link_to 'New task', new_task_path

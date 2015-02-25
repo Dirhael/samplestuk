@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
+<div class="form-signin">
+  <div class="row">
+    <strong>Content</strong>
+    <%= @task.content %>
+  </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @task.content %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @task.state %>
-</p>
+  <div class="row">
+    <strong>State</strong>
+    <%= @task.state %>
+  </div>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

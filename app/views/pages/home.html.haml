@@ -1,0 +1,7 @@
+.jumbotron
+  %h1
+    %i.fa.fa-cubes>
+    Samplestuk
+  %p This is a to-do list in RoR
+  - if !current_user
+    = link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary btn-lg'

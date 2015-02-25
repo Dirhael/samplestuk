@@ -1,0 +1,26 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar This
+        %span.icon-bar Is
+        %span.icon-bar An Icon
+      = link_to "<i class='fa fa-cubes'></i>Samplestuk".html_safe, root_path, class: 'navbar-brand'
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user
+          %li
+            .dropdown.navbar-btn
+              %button.btn.btn-default.dropdown-toggle{:border => "none", "data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-user
+              %ul.dropdown-menu{:role => "menu"}
+                %li{:role => "presentation"}= link_to ' Settings', edit_user_registration_path, class: 'fa fa-cc-visa'
+                %li{:role => "presentation"}= link_to 'Logout', destroy_user_session_path, method: :delete
+        - else
+          %li= link_to 'About', about_path
+          %li= link_to 'Login', new_user_session_path
+    / /.navbar-collapse
+  / /.container-fluid

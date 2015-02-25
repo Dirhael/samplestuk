@@ -1,0 +1,16 @@
+.panel.panel-info
+  .panel-heading
+    = link_to edit_task_path(task) do
+      created #{time_ago_in_words(task.created_at)} ago
+    = link_to task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, class: 'pull-right' do
+      %i.fa.fa-remove
+  .panel-body= task.content_html
+  .panel-footer.text-center
+    - if task.state == 'doing'
+      .btn-group.btn-group-justified
+        = link_to '<i class="fa fa-arrow-left"></i>'.html_safe, change_task_path(task, state: 'to_do'), method: :put, class: 'btn btn-info btn-md btn-block'
+        = link_to '<i class="fa fa-arrow-right"></i>'.html_safe, change_task_path(task, state: 'done'), method: :put, class: 'btn btn-info btn-md btn-block'
+    - elsif task.state == 'to_do'
+      = link_to '<i class="fa fa-arrow-right"></i>'.html_safe, change_task_path(task, state: 'doing'), method: :put, class: 'btn btn-info btn-md btn-block'
+    - else
+      = link_to '<i class="fa fa-arrow-left"></i>'.html_safe, change_task_path(task, state: 'doing'), method: :put, class: 'btn btn-info btn-md btn-block'
