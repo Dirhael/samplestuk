@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
 
   has_many :tasks, dependent: :destroy
+
+  def is_admin?
+    admin?
+  end
 end
